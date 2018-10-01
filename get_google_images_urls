@@ -1,0 +1,26 @@
+/* How to build urls file with google images.
+
+1. Go to Google Images.
+2. Search for the element/character/etc.. that you want to build the dataset with, for example "Darth Vader".
+3. Open the console in the developers tools/ javascript console depending the web browser you are using. In Chrome, javascript console, in opera, developer tools -> console.
+3. Scroll down untill the images became irrelevant or unusefull or far from the real element/ character/etc.
+4. Paste the following code in the console and hit enter:
+*/
+
+// pull down jquery into the JavaScript console
+var script = document.createElement('script');
+script.src = "https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js";
+document.getElementsByTagName('head')[0].appendChild(script);
+
+// grab the URLs
+var urls = $('.rg_di .rg_meta').map(function() { return JSON.parse($(this).text()).ou; });
+
+// write the URls to file (one per line)
+var textToSave = urls.toArray().join('\n');
+var hiddenElement = document.createElement('a');
+hiddenElement.href = 'data:attachment/text,' + encodeURI(textToSave);
+hiddenElement.target = '_blank';
+hiddenElement.download = 'yoda_urls.txt';
+hiddenElement.click();
+
+/* Now you have a vader_urls.txt file in your browser's Downloads folder which contains all the scrolled urls.
