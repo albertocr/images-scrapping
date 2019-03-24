@@ -20,7 +20,7 @@ var textToSave = urls.toArray().join('\n');
 var hiddenElement = document.createElement('a');
 hiddenElement.href = 'data:attachment/text,' + encodeURI(textToSave);
 hiddenElement.target = '_blank';
-hiddenElement.download = 'yoda_urls.txt';
+hiddenElement.download = 'vader_urls.txt';
 hiddenElement.click();
 
 /* Now you have a vader_urls.txt file in your browser's Downloads folder which contains all the scrolled urls.
